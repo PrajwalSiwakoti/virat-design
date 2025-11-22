@@ -328,7 +328,7 @@
         width: 100%;
         height: 100%;
         opacity: 0;
-        transition: opacity 1s ease;
+        transition: opacity 0.8s ease;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -409,24 +409,23 @@
         opacity: 1;
       }
 
+      /* Fixed Carousel Arrows - No Circles */
       .carousel-arrow {
-        background: rgba(255, 255, 255, 0.9);
+        background: transparent;
         border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
         cursor: pointer;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-dark);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        color: var(--primary-white);
+        font-size: 2.5rem;
+        opacity: 0.8;
       }
 
       .carousel-arrow:hover {
-        background: var(--primary-white);
-        transform: scale(1.1);
+        opacity: 1;
+        transform: scale(1.2);
         color: var(--accent-gold);
       }
 
@@ -1154,6 +1153,11 @@
         .testimonial-slide {
           padding: 30px 20px;
         }
+
+        /* Smaller arrows for mobile */
+        .carousel-arrow {
+          font-size: 2rem;
+        }
       }
 
       @media (max-width: 576px) {
@@ -1180,6 +1184,11 @@
 
         .slide-content p {
           text-align: center;
+        }
+
+        /* Even smaller arrows for very small screens */
+        .carousel-arrow {
+          font-size: 1.8rem;
         }
       }
     </style>
@@ -1529,7 +1538,7 @@
           <div class="footer-about">
             <div class="footer-logo">
               <img
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0zMCAxMEg0MFY0MEgzMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTUwIDEwSDYwVjQwSDUwVjEwWiIgZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTcwIDEwSDk4VjQwSDcwVjEwWiIgZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAxMEgxMTFWMTdIMTAwVjEwWiIgZmlsbD0iI0M5QTk2RSIvPgo8cGF0aCBkPSJNMTAwIDIzSDExMVYzMEgxMDBWMjNaIiBmaWxsPSIjQzlBOTZFIi8+CjxwYXRoIGQ9Ik0xMDAgMzZIMTExVjQwSDEwMFYzNloiIGZpbGw9IiNDOUE5NkUiLz4KPC9zdmc+Cg=="
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0zMCAxMEg0MFY0MEgzMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTUwIDEwSDYwVjQwSDUwVjEwWiIgZmlsbD0iI0M5QTk2RSIvPgo8cGF0aCBkPSJNNzAgMTBIOThWNDBINzBWMTBaIiBmaWxsPSIjQzlBOTZFIi8+CjxwYXRoIGQ9Ik0xMDAgMTBIMTExVjE3SDEwMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAyM0gxMTFWMzBIMTAwVjIzWiIgZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAzNkgxMTFWNDBIMTAwVjM2WiIgZpbGw9IiNDOUE5NkUiLz4KPC9zdmc+Cg=="
                 alt="Virat Design Logo"
                 class="footer-logo-img"
               />
@@ -1643,8 +1652,8 @@
         showSlide(currentSlide);
       }
 
-      // Auto-advance slides every 5 seconds
-      let slideInterval = setInterval(nextSlide, 5000);
+      // Auto-advance slides every 3 seconds (decreased from 5)
+      let slideInterval = setInterval(nextSlide, 3000);
 
       // Pause auto-advance on hover
       carousel.addEventListener("mouseenter", () => {
@@ -1652,7 +1661,7 @@
       });
 
       carousel.addEventListener("mouseleave", () => {
-        slideInterval = setInterval(nextSlide, 5000);
+        slideInterval = setInterval(nextSlide, 3000);
       });
 
       // Navigation buttons
@@ -1685,7 +1694,7 @@
         currentTestimonial =
           (currentTestimonial + 1) % testimonialSlides.length;
         showTestimonial(currentTestimonial);
-      }, 6000);
+      }, 5000);
 
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
