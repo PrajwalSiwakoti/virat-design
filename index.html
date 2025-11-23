@@ -175,16 +175,38 @@
       }
 
       .logo-large {
-        font-size: 5rem;
-        font-weight: 700;
-        color: var(--text-dark);
+        height: 160px; /* Increased SVG logo size */
+        width: auto;
         margin-bottom: 2rem;
-        letter-spacing: 3px;
-        text-shadow: 0 0 20px rgba(201, 169, 110, 0.5);
+        filter: brightness(0.8);
         position: relative;
       }
 
       .logo-large::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.8) 50%,
+          transparent 70%
+        );
+        animation: glassShine 3s ease-in-out infinite;
+      }
+
+      .logo-text-large {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo-text-large::after {
         content: "";
         position: absolute;
         top: 0;
@@ -231,7 +253,7 @@
       }
 
       .logo {
-        height: 45px;
+        height: 80px; /* Increased logo size */
         width: auto;
         margin-right: 15px;
         filter: brightness(0.8);
@@ -244,10 +266,12 @@
       }
 
       .logo-text {
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2.2rem; /* Increased size */
+        font-weight: 800; /* Made bolder */
         color: var(--text-dark);
         text-decoration: none;
+        display: flex;
+        align-items: center;
       }
 
       .logo-text span {
@@ -270,6 +294,9 @@
         transition: all 0.3s ease;
         position: relative;
         padding: 5px 0;
+        text-transform: uppercase; /* Make nav items uppercase */
+        font-size: 0.9rem;
+        letter-spacing: 1px;
       }
 
       .nav-links a:hover {
@@ -342,20 +369,17 @@
 
       .carousel-slide:nth-child(1) {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")
-            center/cover;
+          url("./images/1 image.jpg") center/cover;
       }
 
       .carousel-slide:nth-child(2) {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")
-            center/cover;
+          url("./images/2 Image.jpg") center/cover;
       }
 
       .carousel-slide:nth-child(3) {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-          url("https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")
-            center/cover;
+          url("./images/3 image.jpg") center/cover;
       }
 
       .slide-content {
@@ -393,40 +417,37 @@
         animation: fadeInUp 1s ease forwards 0.9s;
       }
 
-      .carousel-nav {
+      /* Carousel Dots */
+      .carousel-dots {
         position: absolute;
-        top: 50%;
+        bottom: 30px;
+        left: 0;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        padding: 0 2rem;
-        transform: translateY(-50%);
-        opacity: 0;
-        transition: all 0.3s ease;
+        justify-content: center;
+        gap: 15px;
+        z-index: 10;
       }
 
-      .hero:hover .carousel-nav {
-        opacity: 1;
-      }
-
-      /* Fixed Carousel Arrows - No Circles */
-      .carousel-arrow {
-        background: transparent;
-        border: none;
+      .carousel-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
         cursor: pointer;
         transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary-white);
-        font-size: 2.5rem;
-        opacity: 0.8;
+        border: 2px solid transparent;
       }
 
-      .carousel-arrow:hover {
-        opacity: 1;
+      .carousel-dot.active {
+        background: var(--accent-gold);
         transform: scale(1.2);
-        color: var(--accent-gold);
+        border-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .carousel-dot:hover {
+        background: var(--accent-gold);
+        transform: scale(1.1);
       }
 
       /* Floating Construction Elements */
@@ -666,7 +687,7 @@
 
       .service-icon {
         font-size: 3rem;
-        color: var(--accent-gold);
+        color: var(--text-dark); /* Changed to black */
         margin-bottom: 20px;
         display: inline-block;
         transition: all 0.3s ease;
@@ -674,6 +695,7 @@
 
       .service-card:hover .service-icon {
         transform: scale(1.2) rotate(5deg);
+        color: var(--accent-gold); /* Change to gold on hover */
       }
 
       .service-card h3 {
@@ -682,26 +704,26 @@
         color: var(--text-dark);
       }
 
-      /* Testimonials Section */
-      .testimonials {
+      /* Design Principles Section */
+      .principles {
         background-color: var(--primary-white);
         padding: 80px 0;
         position: relative;
         overflow: hidden;
       }
 
-      .testimonials-container {
+      .principles-container {
         max-width: 800px;
         margin: 0 auto;
         position: relative;
       }
 
-      .testimonial-carousel {
+      .principles-carousel {
         position: relative;
         overflow: hidden;
       }
 
-      .testimonial-slide {
+      .principle-slide {
         display: none;
         text-align: center;
         padding: 40px 30px;
@@ -711,81 +733,49 @@
         transition: all 0.5s ease;
       }
 
-      .testimonial-slide.active {
+      .principle-slide.active {
         display: block;
         animation: fadeIn 0.8s ease;
       }
 
-      .testimonial-content {
+      .principle-content {
         padding: 20px;
       }
 
-      .testimonial-content p {
-        font-size: 1.2rem;
-        font-style: italic;
+      .principle-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--accent-gold);
+      }
+
+      .principle-content p {
+        font-size: 1.1rem;
         margin-bottom: 25px;
         color: var(--text-light);
         position: relative;
       }
 
-      .testimonial-content p::before,
-      .testimonial-content p::after {
-        content: '"';
-        font-size: 3rem;
-        color: var(--accent-gold);
-        position: absolute;
-        opacity: 0.3;
-      }
-
-      .testimonial-content p::before {
-        top: -20px;
-        left: -10px;
-      }
-
-      .testimonial-content p::after {
-        bottom: -40px;
-        right: -10px;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .author-avatar {
-        width: 60px;
-        height: 60px;
+      .principle-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: var(--accent-gold);
+        color: var(--primary-white);
         border-radius: 50%;
-        overflow: hidden;
-        border: 3px solid var(--accent-gold);
+        line-height: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
       }
 
-      .author-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .author-info h4 {
-        margin-bottom: 5px;
-        color: var(--text-dark);
-      }
-
-      .author-info span {
-        color: var(--accent-gold);
-        font-size: 0.9rem;
-      }
-
-      .testimonial-dots {
+      .principles-dots {
         display: flex;
         justify-content: center;
         gap: 15px;
         margin-top: 30px;
       }
 
-      .testimonial-dot {
+      .principle-dot {
         width: 12px;
         height: 12px;
         border-radius: 50%;
@@ -794,7 +784,7 @@
         transition: all 0.3s ease;
       }
 
-      .testimonial-dot.active {
+      .principle-dot.active {
         background: var(--accent-gold);
         transform: scale(1.2);
       }
@@ -930,16 +920,18 @@
       }
 
       .footer-logo-img {
-        height: 45px;
+        height: 80px; /* Increased footer logo size */
         width: auto;
         margin-right: 15px;
         filter: brightness(0.8);
       }
 
       .footer-logo-text {
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2.2rem; /* Increased size */
+        font-weight: 800; /* Made bolder */
         color: var(--text-dark);
+        display: flex;
+        align-items: center;
       }
 
       .footer-logo-text span {
@@ -1146,17 +1138,8 @@
           grid-template-columns: 1fr;
         }
 
-        .carousel-nav {
-          opacity: 1;
-        }
-
-        .testimonial-slide {
+        .principle-slide {
           padding: 30px 20px;
-        }
-
-        /* Smaller arrows for mobile */
-        .carousel-arrow {
-          font-size: 2rem;
         }
       }
 
@@ -1170,7 +1153,11 @@
         }
 
         .logo-large {
-          font-size: 3.5rem;
+          height: 120px; /* Adjusted for mobile */
+        }
+
+        .logo-text-large {
+          font-size: 2.5rem; /* Adjusted for mobile */
         }
 
         .slide-content {
@@ -1185,11 +1172,6 @@
         .slide-content p {
           text-align: center;
         }
-
-        /* Even smaller arrows for very small screens */
-        .carousel-arrow {
-          font-size: 1.8rem;
-        }
       }
     </style>
   </head>
@@ -1197,8 +1179,12 @@
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="loading-overlay">
       <div class="logo-container">
-        <div class="logo-large">VD</div>
-        <h1>Virat Design</h1>
+        <img
+          src="./images/logoo.svg"
+          alt="Virat Design Logo"
+          class="logo-large"
+        />
+        <h1 class="logo-text-large">VIRAT DESIGN</h1>
       </div>
     </div>
 
@@ -1206,20 +1192,16 @@
     <header id="header">
       <div class="container header-container">
         <div class="logo-container-nav">
-          <img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0zMCAxMEg0MFY0MEgzMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTUwIDEwSDYwVjQwSDUwVjEwWiIgZmlsbD0iI0M5QTk2RSIvPgo8cGF0aCBkPSJNNzAgMTBIOThWNDBINzBWMTBaIiBmaWxsPSIjQzlBOTZFIi8+CjxwYXRoIGQ9Ik0xMDAgMTBIMTExVjE3SDEwMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAyM0gxMTFWMzBIMTAwVjIzWiIgZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAzNkgxMTFWNDBIMTAwVjM2WiIgZpbGw9IiNDOUE5NkUiLz4KPC9zdmc+Cg=="
-            alt="Virat Design Logo"
-            class="logo"
-          />
-          <a href="#" class="logo-text">Virat<span>Design</span></a>
+          <img src="./images/logoo.svg" alt="Virat Design Logo" class="logo" />
+          <a href="#" class="logo-text">VIRAT<span>DESIGN</span></a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#home">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#principles">DESIGN PRINCIPLES</a></li>
+          <li><a href="#contact">CONTACT</a></li>
         </ul>
       </div>
     </header>
@@ -1229,44 +1211,43 @@
       <div class="carousel" id="mainCarousel">
         <div class="carousel-slide active">
           <div class="slide-content">
-            <h2>Building Excellence in Civil Construction</h2>
+            <h2>Design With <br />Intent</h2>
             <p>
-              Virat Design delivers premium construction solutions with
-              precision engineering, innovative design, and uncompromising
-              quality.
+              We create spaces shaped by clarity, calmness, and refined detail —
+              where every line has purpose.
             </p>
             <a href="#contact" class="btn">Get In Touch</a>
           </div>
         </div>
         <div class="carousel-slide">
           <div class="slide-content">
-            <h2>Innovative Design Solutions</h2>
+            <h2>Structures That Live With You</h2>
             <p>
-              Transforming visions into architectural marvels with cutting-edge
-              technology and sustainable practices.
+              Our architecture blends form, function, and light to craft
+              environments that elevate everyday life.
             </p>
             <a href="#services" class="btn">Our Services</a>
           </div>
         </div>
         <div class="carousel-slide">
           <div class="slide-content">
-            <h2>Quality Craftsmanship</h2>
+            <h2>Spaces That Feel Like You</h2>
             <p>
-              Where precision meets perfection in construction, delivering
-              projects that stand the test of time.
+              We curate interiors with warmth, precision, and subtle luxury —
+              tailored to your lifestyle and sensibilities.
             </p>
             <a href="#about" class="btn">Learn More</a>
           </div>
         </div>
       </div>
-      <div class="carousel-nav">
-        <button class="carousel-arrow prev" id="prevBtn">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-arrow next" id="nextBtn">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+
+      <!-- Carousel Dots -->
+      <div class="carousel-dots">
+        <span class="carousel-dot active" data-slide="0"></span>
+        <span class="carousel-dot" data-slide="1"></span>
+        <span class="carousel-dot" data-slide="2"></span>
       </div>
+
       <div class="construction-elements">
         <div class="construction-element"><i class="fas fa-hard-hat"></i></div>
         <div class="construction-element"><i class="fas fa-tools"></i></div>
@@ -1292,29 +1273,26 @@
         <div class="about-content">
           <div class="about-text">
             <p>
-              With over 15 years of experience in the construction industry,
-              Virat Design has established itself as a leader in delivering
-              exceptional civil construction projects. Our commitment to
-              quality, innovation, and client satisfaction sets us apart.
+              Virat Design is a contemporary architecture and design studio
+              dedicated to creating spaces that are thoughtful, functional, and
+              timeless. We believe great architecture begins with understanding
+              — understanding people, context, and intention. Our work is rooted
+              in clean aesthetics, precise detailing, and a strong respect for
+              materials. Whether it's a residence, a commercial space, or a
+              full-scale development, we approach every project with a balance
+              of creativity and technical clarity.
             </p>
+
             <p>
-              We specialize in residential complexes, commercial buildings,
-              industrial facilities, and infrastructure projects. Our team of
-              skilled professionals ensures that every project is completed with
-              precision, on time, and within budget.
+              At Virat Design, we prioritize simplicity that feels elevated,
+              function that feels effortless, and design that feels personal.
+              Every space we craft is guided by a singular purpose — to enhance
+              the way people live, work, and experience the world.
             </p>
-            <p>
-              At Virat Design, we believe in building not just structures, but
-              lasting relationships with our clients through transparency,
-              integrity, and excellence in every aspect of our work.
-            </p>
-            <a href="#services" class="btn">Our Services</a>
+            <a href="#principles" class="btn">Our Principles</a>
           </div>
           <div class="about-image">
-            <img
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt="Construction Site"
-            />
+            <img src="images/aboutUss.jpg" alt="Construction Site" />
           </div>
         </div>
       </div>
@@ -1377,80 +1355,74 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <!-- Design Principles Section -->
+    <section class="principles" id="principles">
       <div class="container">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonials-container">
-          <div class="testimonial-carousel">
-            <div class="testimonial-slide active">
-              <div class="testimonial-content">
+        <h2>Studio Principles</h2>
+        <div class="principles-container">
+          <div class="principles-carousel">
+            <div class="principle-slide active">
+              <div class="principle-content">
+                <div class="principle-number">1</div>
+                <h3>Clarity of Vision</h3>
                 <p>
-                  Virat Design delivered beyond our expectations. Their
-                  attention to detail and commitment to quality is remarkable.
-                  The project was completed on time and within budget.
+                  We begin by understanding your lifestyle, your priorities, and
+                  the way you want to live. Every decision stems from a clear,
+                  shared vision that aligns design with your needs.
                 </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/32.jpg"
-                      alt="Rajesh Kumar"
-                    />
-                  </div>
-                  <div class="author-info">
-                    <h4>Rajesh Kumar</h4>
-                    <span>Commercial Client</span>
-                  </div>
-                </div>
               </div>
             </div>
-            <div class="testimonial-slide">
-              <div class="testimonial-content">
+            <div class="principle-slide">
+              <div class="principle-content">
+                <div class="principle-number">2</div>
+                <h3>Crafted Simplicity</h3>
                 <p>
-                  Professional team, timely completion, and exceptional
-                  craftsmanship. Highly recommended! They understood our vision
-                  perfectly and brought it to life.
+                  We refine ideas until only the essential remains — creating
+                  spaces that feel calm, intuitive, and effortless for the
+                  people who inhabit them.
                 </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img
-                      src="https://randomuser.me/api/portraits/women/44.jpg"
-                      alt="Priya Sharma"
-                    />
-                  </div>
-                  <div class="author-info">
-                    <h4>Priya Sharma</h4>
-                    <span>Residential Client</span>
-                  </div>
-                </div>
               </div>
             </div>
-            <div class="testimonial-slide">
-              <div class="testimonial-content">
+            <div class="principle-slide">
+              <div class="principle-content">
+                <div class="principle-number">3</div>
+                <h3>Material Honesty</h3>
                 <p>
-                  The transformation of our office space was incredible. Virat
-                  Design understands client vision perfectly. Their project
-                  management was seamless from start to finish.
+                  We work with authentic materials chosen for their beauty,
+                  durability, and feel. Each material is selected to complement
+                  your taste and elevate everyday experience.
                 </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/67.jpg"
-                      alt="Amit Patel"
-                    />
-                  </div>
-                  <div class="author-info">
-                    <h4>Amit Patel</h4>
-                    <span>Corporate Client</span>
-                  </div>
-                </div>
+              </div>
+            </div>
+            <div class="principle-slide">
+              <div class="principle-content">
+                <div class="principle-number">4</div>
+                <h3>Human-Centered Spaces</h3>
+                <p>
+                  Architecture is for people. We design with comfort, natural
+                  light, movement, and emotion in mind — ensuring your space
+                  feels both functional and deeply personal.
+                </p>
+              </div>
+            </div>
+            <div class="principle-slide">
+              <div class="principle-content">
+                <div class="principle-number">5</div>
+                <h3>Quiet Luxury</h3>
+                <p>
+                  Our focus is subtle elegance: thoughtful proportions, refined
+                  detailing, and a sense of harmony. We create understated
+                  spaces that age gracefully and reflect your unique identity.
+                </p>
               </div>
             </div>
           </div>
-          <div class="testimonial-dots">
-            <span class="testimonial-dot active" data-slide="0"></span>
-            <span class="testimonial-dot" data-slide="1"></span>
-            <span class="testimonial-dot" data-slide="2"></span>
+          <div class="principles-dots">
+            <span class="principle-dot active" data-slide="0"></span>
+            <span class="principle-dot" data-slide="1"></span>
+            <span class="principle-dot" data-slide="2"></span>
+            <span class="principle-dot" data-slide="3"></span>
+            <span class="principle-dot" data-slide="4"></span>
           </div>
         </div>
       </div>
@@ -1467,32 +1439,30 @@
               <div>
                 <h3>Our Office</h3>
                 <p>
-                  123 Construction Avenue<br />Building District, City 10001
+                  kanchanbari, biratnagar <br />Koshi province, nepal
+                  <!-- 123 Construction Avenue<br />Building District, City 10001 -->
                 </p>
               </div>
             </div>
-            <div class="contact-item">
+            <!-- <div class="contact-item">
               <i class="fas fa-phone contact-icon"></i>
               <div>
                 <h3>Phone Number</h3>
                 <p>+1 (555) 123-4567</p>
               </div>
-            </div>
+            </div> -->
             <div class="contact-item">
               <i class="fas fa-envelope contact-icon"></i>
               <div>
                 <h3>Email Address</h3>
-                <p>info@viratdesign.com</p>
+                <p>viratdesignstudio@gmail.com</p>
               </div>
             </div>
             <div class="contact-item">
               <i class="fas fa-clock contact-icon"></i>
               <div>
                 <h3>Working Hours</h3>
-                <p>
-                  Monday - Friday: 8:00 AM - 6:00 PM<br />Saturday: 9:00 AM -
-                  2:00 PM
-                </p>
+                <p>Sunday - Friday: 10:00 AM - 5:00 PM<br /></p>
               </div>
             </div>
           </div>
@@ -1538,16 +1508,13 @@
           <div class="footer-about">
             <div class="footer-logo">
               <img
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIGQ9Ik0zMCAxMEg0MFY0MEgzMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTUwIDEwSDYwVjQwSDUwVjEwWiIgZmlsbD0iI0M5QTk2RSIvPgo8cGF0aCBkPSJNNzAgMTBIOThWNDBINzBWMTBaIiBmaWxsPSIjQzlBOTZFIi8+CjxwYXRoIGQ9Ik0xMDAgMTBIMTExVjE3SDEwMFYxMFoiIGZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAyM0gxMTFWMzBIMTAwVjIzWiIgZpbGw9IiNDOUE5NkUiLz4KPHBhdGggZD0iTTEwMCAzNkgxMTFWNDBIMTAwVjM2WiIgZpbGw9IiNDOUE5NkUiLz4KPC9zdmc+Cg=="
+                src="./images/logoo.svg"
                 alt="Virat Design Logo"
                 class="footer-logo-img"
               />
-              <div class="footer-logo-text">Virat<span>Design</span></div>
+              <div class="footer-logo-text">VIRAT<span>DESIGN</span></div>
             </div>
-            <p>
-              Building the future with precision, quality, and innovation. Virat
-              Design is your trusted partner for all civil construction needs.
-            </p>
+            <p>Building the future with precision, quality, and innovation.</p>
           </div>
           <div class="footer-links">
             <div class="footer-column">
@@ -1556,7 +1523,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#principles">Design Principles</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -1572,10 +1539,32 @@
             <div class="footer-column">
               <h4>Connect With Us</h4>
               <ul>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Facebook</a></li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/virat.designs/#"
+                    target="_blank"
+                    >Instagram</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=100091875470779"
+                    target="_blank"
+                    >Facebook</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/virat-design"
+                    target="_blank"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a href="https://twitter.com/viratdesign" target="_blank"
+                    >Twitter</a
+                  >
+                </li>
               </ul>
             </div>
           </div>
@@ -1632,13 +1621,16 @@
       // Carousel functionality
       const carousel = document.getElementById("mainCarousel");
       const slides = carousel.querySelectorAll(".carousel-slide");
-      const prevBtn = document.getElementById("prevBtn");
-      const nextBtn = document.getElementById("nextBtn");
+      const carouselDots = document.querySelectorAll(".carousel-dot");
       let currentSlide = 0;
+      let userInteracted = false;
 
       function showSlide(index) {
         slides.forEach((slide) => slide.classList.remove("active"));
+        carouselDots.forEach((dot) => dot.classList.remove("active"));
+
         slides[index].classList.add("active");
+        carouselDots[index].classList.add("active");
         currentSlide = index;
       }
 
@@ -1647,53 +1639,49 @@
         showSlide(currentSlide);
       }
 
-      function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-      }
+      // Auto-advance slides every 5 seconds (increased from 3)
+      let slideInterval = setInterval(nextSlide, 5000);
 
-      // Auto-advance slides every 3 seconds (decreased from 5)
-      let slideInterval = setInterval(nextSlide, 3000);
-
-      // Pause auto-advance on hover
-      carousel.addEventListener("mouseenter", () => {
+      // Reset timer when user interacts with dots
+      function resetTimer() {
         clearInterval(slideInterval);
-      });
-
-      carousel.addEventListener("mouseleave", () => {
-        slideInterval = setInterval(nextSlide, 3000);
-      });
-
-      // Navigation buttons
-      nextBtn.addEventListener("click", nextSlide);
-      prevBtn.addEventListener("click", prevSlide);
-
-      // Testimonial Carousel
-      const testimonialSlides = document.querySelectorAll(".testimonial-slide");
-      const testimonialDots = document.querySelectorAll(".testimonial-dot");
-      let currentTestimonial = 0;
-
-      function showTestimonial(index) {
-        testimonialSlides.forEach((slide) => slide.classList.remove("active"));
-        testimonialDots.forEach((dot) => dot.classList.remove("active"));
-
-        testimonialSlides[index].classList.add("active");
-        testimonialDots[index].classList.add("active");
-        currentTestimonial = index;
+        slideInterval = setInterval(nextSlide, 5000);
       }
 
       // Dot click events
-      testimonialDots.forEach((dot, index) => {
+      carouselDots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
-          showTestimonial(index);
+          userInteracted = true;
+          showSlide(index);
+          resetTimer();
         });
       });
 
-      // Auto-advance testimonials
+      // Design Principles Carousel
+      const principleSlides = document.querySelectorAll(".principle-slide");
+      const principleDots = document.querySelectorAll(".principle-dot");
+      let currentPrinciple = 0;
+
+      function showPrinciple(index) {
+        principleSlides.forEach((slide) => slide.classList.remove("active"));
+        principleDots.forEach((dot) => dot.classList.remove("active"));
+
+        principleSlides[index].classList.add("active");
+        principleDots[index].classList.add("active");
+        currentPrinciple = index;
+      }
+
+      // Dot click events
+      principleDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          showPrinciple(index);
+        });
+      });
+
+      // Auto-advance principles
       setInterval(() => {
-        currentTestimonial =
-          (currentTestimonial + 1) % testimonialSlides.length;
-        showTestimonial(currentTestimonial);
+        currentPrinciple = (currentPrinciple + 1) % principleSlides.length;
+        showPrinciple(currentPrinciple);
       }, 5000);
 
       // Smooth scrolling for anchor links
@@ -1756,10 +1744,9 @@
           }
         });
 
-        // Testimonials section animations
-        const testimonialItems =
-          document.querySelectorAll(".testimonial-slide");
-        testimonialItems.forEach((item, index) => {
+        // Principles section animations
+        const principleItems = document.querySelectorAll(".principle-slide");
+        principleItems.forEach((item, index) => {
           if (isElementInViewport(item)) {
             setTimeout(() => {
               item.classList.add("animate");
@@ -1781,7 +1768,7 @@
       document.getElementById("currentYear").textContent =
         new Date().getFullYear();
 
-      // Initialize animations on page load
+      // Initialize animations on page  load
       window.addEventListener("load", () => {
         handleScrollAnimations();
       });
